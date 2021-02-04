@@ -5,5 +5,5 @@ module.exports = {
   semi: false,
   singleQuote: true,
   endOfLine: 'auto',
-  arrowParens: 'avoid',
+  arrowParens: 'avoid'
 }

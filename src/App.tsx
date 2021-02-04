@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import { range } from 'lodash'
+
+const ROWS = 50
+const COLUMNS = 50
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <table>
+        <tbody>
+          {range(ROWS).map(row => {
+            return (
+              <tr key={row}>
+                {range(COLUMNS).map(column => {
+                  return <td key={column}>{`${row}-${column}`}</td>
+                })}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

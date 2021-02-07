@@ -74,9 +74,14 @@ function getAliveNeighboursCount(row: number, column: number, game: Game) {
 
 function isCellActive(row: number, column: number, game: Game) {
   const neighboursCount = getAliveNeighboursCount(row, column, game)
-  if (neighboursCount < 2) {
+  const isNowAlive = game[row][column]
+  if (isNowAlive && neighboursCount < 2) {
     return false
-  } else if (neighboursCount === 2 || neighboursCount === 3) {
+  } else if (isNowAlive && (neighboursCount === 2 || neighboursCount === 3)) {
+    return true
+  } else if (isNowAlive && neighboursCount >= 3) {
+    return false
+  } else if (!isNowAlive && neighboursCount === 3) {
     return true
   }
   return false

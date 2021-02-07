@@ -2,14 +2,14 @@ import React from 'react'
 import './App.css'
 import { range } from 'lodash'
 import Cell from './Cell'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { iterateGame } from './redux/actions/appActions'
-
-const ROWS = 50
-const COLUMNS = 50
+import { State } from './redux/reducers/appReducer'
 
 function App() {
   const dispatch = useDispatch()
+  const { rows, columns } = useSelector((state: State) => state)
+
   const handleIterate = () => {
     dispatch(iterateGame())
   }
@@ -21,11 +21,11 @@ function App() {
 
       <table className="gameBoard" cellSpacing={0} cellPadding={0}>
         <tbody>
-          {range(ROWS).map(row => {
+          {range(rows).map(row => {
             return (
               <tr key={row}>
-                {range(COLUMNS).map(column => (
-                  <Cell key={column} />
+                {range(columns).map(column => (
+                  <Cell key={column} column={column} row={row} />
                 ))}
               </tr>
             )

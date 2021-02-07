@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React  from 'react'
 import classNames from 'classnames'
+import { useDispatch } from 'react-redux'
+import { addCell } from './redux/actions/appActions'
 
 type Props = {
-  active?: boolean
+  row: number
+  column: number
 }
 
-export default function Cell({ active }: Props) {
-  const [isActive, setActive] = useState(!!active)
+export default function Cell({ column, row }: Props) {
+  const dispatch = useDispatch()
+  const isActive = false
   const handleClick = () => {
-    setActive(active => !active)
+    dispatch(addCell(row, column))
   }
   return <td className={classNames('cell', { active: isActive })} onClick={handleClick} />
 }

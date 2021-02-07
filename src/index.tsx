@@ -6,8 +6,14 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { appReducer } from './redux/reducers/appReducer'
+import { initGame } from './redux/actions/appActions'
+
+const ROWS = 50
+const COLUMNS = 50
 
 const store = createStore(appReducer)
+
+store.dispatch(initGame(ROWS, COLUMNS))
 
 ReactDOM.render(
   <React.StrictMode>

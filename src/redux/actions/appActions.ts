@@ -1,4 +1,12 @@
-import { actionsKeys, AddCellAction, InitGameAction, IterateGameAction, ResetGameAction } from './appActionsTypes'
+import {
+  actionsKeys,
+  AddCellAction,
+  InitGameAction,
+  IterateGameAction,
+  PauseProgressAction,
+  ResetGameAction,
+  StartProgressAction
+} from './appActionsTypes'
 
 export function initGame(rows: number, columns: number): InitGameAction {
   return {
@@ -19,6 +27,18 @@ export function iterateGame(): IterateGameAction {
 export function resetGame(): ResetGameAction {
   return {
     type: actionsKeys.RESET_GAME
+  }
+}
+
+export function startProgress(): StartProgressAction {
+  return {
+    type: actionsKeys.START_PROGRESS
+  }
+}
+
+export function pauseProgress(): PauseProgressAction {
+  return {
+    type: actionsKeys.PAUSE_PROGRESS
   }
 }
 

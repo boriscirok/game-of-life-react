@@ -38,6 +38,16 @@ export function appReducer(state: State = initialState, action: AppActions) {
         ...state,
         game: getNewGame(rows, columns)
       }
+    case actionsKeys.START_PROGRESS:
+      return {
+        ...state,
+        gameState: GameStateEnum.IN_PROGRESS
+      }
+    case actionsKeys.PAUSE_PROGRESS:
+      return {
+        ...state,
+        gameState: GameStateEnum.PAUSED
+      }
     case actionsKeys.ITERATE_GAME:
       return {
         ...state,

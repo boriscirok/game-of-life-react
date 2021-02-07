@@ -27,17 +27,19 @@ export function appReducer(state: State = initialState, action: AppActions) {
     case actionsKeys.INIT_GAME: {
       const { rows, columns } = action.payload
       return {
+        ...state,
         game: getNewGame(rows, columns),
         columns,
         rows
       }
     }
-    case actionsKeys.RESET_GAME:
+    case actionsKeys.RESET_GAME: {
       const { rows, columns } = state
       return {
         ...state,
         game: getNewGame(rows, columns)
       }
+    }
     case actionsKeys.START_PROGRESS:
       return {
         ...state,

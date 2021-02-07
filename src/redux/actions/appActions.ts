@@ -1,9 +1,7 @@
-export const enum actionsKeys {
-  ITERATE_GAME = 'ITERATE_GAME'
-}
+import { actionsKeys, IterateGame } from './appActionsTypes'
 
-export type IterateGame = {
-  type: actionsKeys.ITERATE_GAME
+export function iterateGame(): IterateGame {
+  return {
+    type: actionsKeys.ITERATE_GAME
+  }
 }
-
-export type AppActions = IterateGame

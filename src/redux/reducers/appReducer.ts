@@ -1,17 +1,19 @@
 import { range } from 'lodash'
 import { actionsKeys, AppActions } from '../actions/appActionsTypes'
-import { Game, isCellActive } from '../../logic/gameLogic'
+import { Game, GameStateEnum, isCellActive } from '../../logic/gameLogic'
 
 export type State = {
   game: Game
   columns: number
   rows: number
+  gameState: GameStateEnum
 }
 
 export const initialState: State = {
   game: [],
   columns: 0,
-  rows: 0
+  rows: 0,
+  gameState: GameStateEnum.PAUSED
 }
 
 function getNewGame(rows: number, columns: number): Game {

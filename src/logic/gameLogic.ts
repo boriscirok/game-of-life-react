@@ -2,6 +2,11 @@ export type GameRow = boolean[]
 
 export type Game = GameRow[]
 
+export enum GameStateEnum {
+  PAUSED = 'PAUSED',
+  IN_PROGRESS = 'IN_PROGRESS'
+}
+
 /**
  *
  * 123 game[row-1][column-1] | game[row-1][column] | game[row-1][column+1]

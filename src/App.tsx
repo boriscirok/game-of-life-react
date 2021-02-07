@@ -8,7 +8,9 @@ import { State } from './redux/reducers/appReducer'
 
 function App() {
   const dispatch = useDispatch()
-  const { rows, columns } = useSelector((state: State) => state)
+  const { rows, columns, game } = useSelector((state: State) => state)
+
+  console.log(game, 'game')
 
   const handleIterate = () => {
     dispatch(iterateGame())

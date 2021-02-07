@@ -1,7 +1,8 @@
-import React  from 'react'
+import React from 'react'
 import classNames from 'classnames'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addCell } from './redux/actions/appActions'
+import { State } from './redux/reducers/appReducer'
 
 type Props = {
   row: number
@@ -10,7 +11,8 @@ type Props = {
 
 export default function Cell({ column, row }: Props) {
   const dispatch = useDispatch()
-  const isActive = false
+  const { game } = useSelector((state: State) => state)
+  const isActive = game[row][column]
   const handleClick = () => {
     dispatch(addCell(row, column))
   }

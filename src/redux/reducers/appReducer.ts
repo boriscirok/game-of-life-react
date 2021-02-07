@@ -30,8 +30,18 @@ export function appReducer(state: State = initialState, action: AppActions) {
       console.log(action)
       return state
     case actionsKeys.ADD_CELL:
-      console.log(action.payload)
-      return state
+      const { column: cellColumn, row: cellRow } = action.payload
+      return {
+        ...state,
+        game: range(state.rows).map(row => {
+          return range(state.columns).map(column => {
+            if (row === cellRow && column === cellColumn) {
+              return !state.game[row][column]
+            }
+            return state.game[row][column]
+          })
+        })
+      }
     default:
       return state
   }

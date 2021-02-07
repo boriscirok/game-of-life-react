@@ -1,32 +1,53 @@
-import React from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import './App.css'
 import { range } from 'lodash'
 import Cell from './Cell'
 import { useDispatch, useSelector } from 'react-redux'
-import { iterateGame, resetGame, startProgress } from './redux/actions/appActions'
+import { iterateGame, pauseProgress, resetGame, startProgress } from './redux/actions/appActions'
 import { State } from './redux/reducers/appReducer'
+import { GameStateEnum } from './logic/gameLogic'
 
 function App() {
   const dispatch = useDispatch()
-  const { rows, columns, game } = useSelector((state: State) => state)
+  const { rows, columns, gameState } = useSelector((state: State) => state)
+  const interval = useRef(0)
 
-  console.log(game, 'game')
-
-  const handleIterate = () => {
+  const handleIterate = useCallback(() => {
     dispatch(iterateGame())
-  }
+  }, [dispatch])
+
   const handleReset = () => {
     dispatch(resetGame())
   }
   const handleStartProgress = () => {
     dispatch(startProgress())
   }
+
+  const handlePauseProgress = () => {
+    dispatch(pauseProgress())
+  }
+
+  useEffect(() => {
+    if (gameState === GameStateEnum.IN_PROGRESS) {
+      interval.current = window.setInterval(() => {
+        handleIterate()
+      }, 100)
+    } else {
+      window.clearInterval(interval.current)
+    }
+
+    return () => {
+      window.clearInterval(interval.current)
+    }
+  }, [gameState, handleIterate])
+
   return (
     <div className="App">
       <header>
         <button onClick={handleIterate}>Iterate</button>
         <button onClick={handleReset}>Reset</button>
         <button onClick={handleStartProgress}>Start progress</button>
+        <button onClick={handlePauseProgress}>Pause progress</button>
       </header>
 
       <table className="gameBoard" cellSpacing={0} cellPadding={0}>

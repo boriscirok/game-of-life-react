@@ -1,5 +1,6 @@
 export enum actionsKeys {
   INIT_GAME = 'game/INIT_GAME',
+  RESET_GAME = 'game/RESET_GAME',
   ITERATE_GAME = 'game/ITERATE_GAME',
   ADD_CELL = 'game/ADD_CELL'
 }
@@ -10,6 +11,10 @@ export type InitGameAction = {
     rows: number
     columns: number
   }
+}
+
+export type ResetGameAction = {
+  type: actionsKeys.RESET_GAME
 }
 
 export type IterateGameAction = {
@@ -24,4 +29,4 @@ export type AddCellAction = {
   }
 }
 
-export type AppActions = InitGameAction | IterateGameAction | AddCellAction
+export type AppActions = InitGameAction | IterateGameAction | AddCellAction | ResetGameAction

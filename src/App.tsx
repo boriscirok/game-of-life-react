@@ -3,7 +3,7 @@ import './App.css'
 import { range } from 'lodash'
 import Cell from './Cell'
 import { useDispatch, useSelector } from 'react-redux'
-import { iterateGame } from './redux/actions/appActions'
+import { iterateGame, resetGame } from './redux/actions/appActions'
 import { State } from './redux/reducers/appReducer'
 
 function App() {
@@ -15,10 +15,14 @@ function App() {
   const handleIterate = () => {
     dispatch(iterateGame())
   }
+  const handleReset = () => {
+    dispatch(resetGame())
+  }
   return (
     <div className="App">
       <header>
         <button onClick={handleIterate}>Iterate</button>
+        <button onClick={handleReset}>Reset</button>
       </header>
 
       <table className="gameBoard" cellSpacing={0} cellPadding={0}>

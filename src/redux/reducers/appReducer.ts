@@ -29,6 +29,13 @@ export function appReducer(state: State = initialState, action: AppActions) {
         columns,
         rows
       }
+    }
+    case actionsKeys.RESET_GAME:
+      const { rows, columns } = state
+      return {
+        ...state,
+        game: getNewGame(rows, columns)
+      }
     case actionsKeys.ITERATE_GAME:
       return {
         ...state,

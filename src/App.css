@@ -2,37 +2,36 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header {
+  margin: 20px auto 0;
 }
 
 .gameBoard {
-  border: 1px solid black;
+  border: 1px solid #AC8E7E;
   margin: 20px auto;
 }
 
 .cell {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   transition: background .1s;
 }
 
 .cell.active {
-  background: black;
+  background: #545352;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  background: #AC8E7E;
+  color:#FFF;
+  border: none;
+  padding: 20px;
+  margin: 0 10px;
+  outline: none;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+button:hover {
+  background:#545352;
 }

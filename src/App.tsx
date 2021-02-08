@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect, useRef } from 'react'
-import './App.css'
 import { range } from 'lodash'
-import Cell from './Cell'
 import { useDispatch, useSelector } from 'react-redux'
-import { iterateGame, pauseProgress, resetGame, startProgress } from './redux/actions/appActions'
+
+import './App.css'
+import Cell from './components/Cell'
+import { iterateGame } from './redux/actions/appActions'
 import { State } from './redux/reducers/appReducer'
 import { GameStateEnum } from './logic/gameLogic'
+import Controls from './components/Controls'
 
 function App() {
   const dispatch = useDispatch()
@@ -15,17 +17,6 @@ function App() {
   const handleIterate = useCallback(() => {
     dispatch(iterateGame())
   }, [dispatch])
-
-  const handleReset = () => {
-    dispatch(resetGame())
-  }
-  const handleStartProgress = () => {
-    dispatch(startProgress())
-  }
-
-  const handlePauseProgress = () => {
-    dispatch(pauseProgress())
-  }
 
   useEffect(() => {
     if (gameState === GameStateEnum.IN_PROGRESS) {
@@ -43,12 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <button onClick={handleIterate}>Iterate</button>
-        <button onClick={handleReset}>Reset</button>
-        <button onClick={handleStartProgress}>Start progress</button>
-        <button onClick={handlePauseProgress}>Pause progress</button>
-      </header>
+      <Controls handleIterate={handleIterate} />
 
       <table className="gameBoard" cellSpacing={0} cellPadding={0}>
         <tbody>

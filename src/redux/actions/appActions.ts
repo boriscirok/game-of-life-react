@@ -3,9 +3,8 @@ import {
   AddCellAction,
   InitGameAction,
   IterateGameAction,
-  PauseProgressAction,
   ResetGameAction,
-  StartProgressAction
+  ToggleProgressAction
 } from './appActionsTypes'
 
 export function initGame(rows: number, columns: number): InitGameAction {
@@ -30,15 +29,9 @@ export function resetGame(): ResetGameAction {
   }
 }
 
-export function startProgress(): StartProgressAction {
+export function toggleProgress(): ToggleProgressAction {
   return {
-    type: actionsKeys.START_PROGRESS
-  }
-}
-
-export function pauseProgress(): PauseProgressAction {
-  return {
-    type: actionsKeys.PAUSE_PROGRESS
+    type: actionsKeys.TOGGLE_PROGRESS
   }
 }
 

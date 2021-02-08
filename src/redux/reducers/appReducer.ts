@@ -40,15 +40,10 @@ export function appReducer(state: State = initialState, action: AppActions) {
         game: getNewGame(rows, columns)
       }
     }
-    case actionsKeys.START_PROGRESS:
+    case actionsKeys.TOGGLE_PROGRESS:
       return {
         ...state,
-        gameState: GameStateEnum.IN_PROGRESS
-      }
-    case actionsKeys.PAUSE_PROGRESS:
-      return {
-        ...state,
-        gameState: GameStateEnum.PAUSED
+        gameState: state.gameState === GameStateEnum.IN_PROGRESS ? GameStateEnum.PAUSED : GameStateEnum.IN_PROGRESS
       }
     case actionsKeys.ITERATE_GAME:
       return {

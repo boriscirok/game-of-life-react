@@ -2,8 +2,7 @@ export enum actionsKeys {
   INIT_GAME = 'game/INIT_GAME',
   RESET_GAME = 'game/RESET_GAME',
   ITERATE_GAME = 'game/ITERATE_GAME',
-  START_PROGRESS = 'game/START_PROGRESS',
-  PAUSE_PROGRESS = 'game/PAUSE_PROGRESS',
+  TOGGLE_PROGRESS = 'game/TOGGLE_PROGRESS',
   ADD_CELL = 'game/ADD_CELL'
 }
 
@@ -23,12 +22,8 @@ export type IterateGameAction = {
   type: actionsKeys.ITERATE_GAME
 }
 
-export type StartProgressAction = {
-  type: actionsKeys.START_PROGRESS
-}
-
-export type PauseProgressAction = {
-  type: actionsKeys.PAUSE_PROGRESS
+export type ToggleProgressAction = {
+  type: actionsKeys.TOGGLE_PROGRESS
 }
 
 export type AddCellAction = {
@@ -39,10 +34,4 @@ export type AddCellAction = {
   }
 }
 
-export type AppActions =
-  | InitGameAction
-  | IterateGameAction
-  | AddCellAction
-  | ResetGameAction
-  | StartProgressAction
-  | PauseProgressAction
+export type AppActions = InitGameAction | IterateGameAction | AddCellAction | ResetGameAction | ToggleProgressAction

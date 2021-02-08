@@ -21,6 +21,7 @@
 .cell {
   width: 10px;
   height: 10px;
+  transition: background .1s;
 }
 
 .cell.active {
